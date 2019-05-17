@@ -29,7 +29,7 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
 
 {{< example class="bg-light" >}}
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
@@ -49,7 +49,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 Toasts are slightly translucent, too, so they blend over whatever they might appear over. For browsers that support the `backdrop-filter` CSS property, we'll also attempt to blur the elements under a toast.
 
 {{< example class="bg-dark" >}}
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
@@ -69,7 +69,7 @@ Toasts are slightly translucent, too, so they blend over whatever they might app
 When you have multiple toasts, we default to vertically stacking them in a readable manner.
 
 {{< example class="bg-light" >}}
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast top-left fade show" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
@@ -83,7 +83,7 @@ When you have multiple toasts, we default to vertically stacking them in a reada
   </div>
 </div>
 
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast top-left fade show" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
@@ -102,9 +102,35 @@ When you have multiple toasts, we default to vertically stacking them in a reada
 
 Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast`.
 
-{{< example class="bg-dark" >}}
-<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-  <div class="toast" style="position: absolute; top: 0; right: 0;">
+{{< example >}}
+<form>
+  <div class="form-group">
+    <label for="selectToastPlacement">Toast placement</label>
+    <select class="form-control" id="selectToastPlacement">
+      <option value="top-center">Top center</option>
+      <option value="top-left">Top left</option>
+      <option value="top-right">Top right</option>
+      <option value="bottom-center">Bottom center</option>
+      <option value="bottom-left">Bottom left</option>
+      <option value="bottom-right">Bottom right</option>
+    </select>
+  </div>
+</form>
+<div aria-live="polite" aria-atomic="true" class="bg-dark" style="position: relative; min-height: 500px;">
+  <div class="toast toast-placement" data-delay="2000">
+    <div class="toast-header">
+      {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
+      <strong class="mr-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+  <div class="toast toast-placement" data-delay="3000">
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
       <strong class="mr-auto">Bootstrap</strong>
