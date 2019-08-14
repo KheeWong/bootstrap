@@ -8,12 +8,8 @@
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 {{- end }}
 
-{{- $anchor := resources.Get "js/vendor/anchor.min.js" -}}
-{{- $clipboard := resources.Get "js/vendor/clipboard.min.js" -}}
-{{- $bscfi := resources.Get "js/vendor/bs-custom-file-input.min.js" -}}
-{{- $application := resources.Get "js/src/application.js" -}}
-{{- $search := resources.Get "js/src/search.js" -}}
-
+{{- $vendorJs := resources.GetMatch "js/vendor/*.js" -}}
+{{- $js := resources.GetMatch "js/src/*.js" -}}
 {{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
-{{- $docsJs := slice $anchor $clipboard $bscfi $application $search | resources.Concat $targetDocsJSPath | resources.Minify | resources.Fingerprint -}}
+{{- $docsJs := slice $vendorJs $js | resources.Concat $targetDocsJSPath | resources.Minify | resources.Fingerprint -}}
 <script src="{{ $docsJs.Permalink | relURL }}"></script>
